@@ -41,28 +41,32 @@ def get_reciprocal_ranks(ps):
         return 0.0
 
 
-def score_submissions(subm_csv, gt_csv, objective_function):
-    """Score submissions with given objective function."""
+def read_sub(sub_path):
+    full_df_gt = pd.read_csv(sub_path)
 
+    content = pd.DataFrame(columns=['item_recommendations'])
+
+    for index, row in full_df_gt.iterrows():
+        content.loc[index] = [row['item_recommendations']]
+
+    return content
+
+def score_submissions(subm_csv, gt_csv, objective_function):
     print(f"Reading ground truth data {gt_csv} ...")
-    df_gt = read_into_df(gt_csv)
+    df_gt = pd.read_csv(gt_csv)
 
     print(f"Reading submission data {subm_csv} ...")
-    df_subm = read_into_df(subm_csv)
+    df_subm = read_sub(subm_csv)
 
-    # create dataframe containing the ground truth to target rows
-    cols = ['reference', 'impressions', 'prices']
-    df_key = df_gt.loc[:, cols]
 
-    # append key to submission file
-    df_subm_with_key = df_key.join(df_subm, how='inner')
-    df_subm_with_key.reference = df_subm_with_key.reference.astype(int)
-    df_subm_with_key = convert_string_to_list(
-        df_subm_with_key, 'item_recommendations', 'item_recommendations'
+    join = df_gt.join(df_subm, how='inner')
+    # join.reference = join.reference.astype(int)
+    join = convert_string_to_list(
+        join, 'item_recommendations', 'item_recommendations'
     )
 
-    # score each row
-    df_subm_with_key['score'] = df_subm_with_key.apply(objective_function, axis=1)
-    mrr = df_subm_with_key.score.mean()
 
+    join['score'] = join.apply(objective_function, axis=1)
+
+    mrr = join.score.mean()
     return mrr
