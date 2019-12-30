@@ -55,3 +55,5 @@ recsys-challenge-2019-algorithm.iml
 # dataset and data
 data/*
 dataset/*
+
+.idea/*
