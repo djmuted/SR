@@ -1,21 +1,13 @@
 from pathlib import Path
-
-import click
 import pandas as pd
 
-from . import functions as f
+from src.verify_submission import functions as f
 
 current_directory = Path(__file__).absolute().parent
 default_data_directory = current_directory.joinpath('..', '..', 'data')
 
 
-@click.command()
-@click.option('--data-path', default=None, help='Directory for the CSV files')
-@click.option('--submission-file', default='submission_popular.csv', help='Submission CSV file')
-@click.option('--test-file', default='test.csv', help='Test CSV file')
 def main(data_path, submission_file, test_file):
-
-    # calculate path to files
     data_directory = Path(data_path) if data_path else default_data_directory
     test_csv = data_directory.joinpath(test_file)
     subm_csv = data_directory.joinpath(submission_file)
@@ -42,5 +34,8 @@ def main(data_path, submission_file, test_file):
         print('One or more checks failed')
 
 
+data_path = '../../data'
+submision_popular = 'submission_popular.csv'
+test_csv = 'test.csv'
 if __name__ == '__main__':
-    main()
+    main(data_path, submision_popular, test_csv)
