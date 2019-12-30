@@ -46,7 +46,7 @@ cover/*
 MANIFEST
 
 # Per-project virtualenvs
-.venv*/
+venv*/
 
 notebooks
 recsys-challenge-2019-algorithm.iml
