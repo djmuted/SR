@@ -1,20 +1,19 @@
 from pathlib import Path
 
-import click
 import pandas as pd
 
-from . import functions as f
+from src.baseline_algorithm import functions as f
 
 current_directory = Path(__file__).absolute().parent
 default_data_directory = current_directory.joinpath('..', '..', 'data')
 
 
-@click.command()
-@click.option('--data-path', default=None, help='Directory for the CSV files')
 def main(data_path):
-
-    # calculate path to files
     data_directory = Path(data_path) if data_path else default_data_directory
+
+    print(data_path)
+    print(data_directory)
+
     train_csv = data_directory.joinpath('train.csv')
     test_csv = data_directory.joinpath('test.csv')
     subm_csv = data_directory.joinpath('submission_popular.csv')
@@ -40,5 +39,6 @@ def main(data_path):
     print("Finished calculating recommendations.")
 
 
+data_path = '../../data/'
 if __name__ == '__main__':
-    main()
+    main(data_path)
