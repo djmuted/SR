@@ -10,7 +10,6 @@ default_data_directory = current_directory.joinpath('..', '..', 'data')
 
 def main(data_path):
     data_directory = Path(data_path) if data_path else default_data_directory
-
     train_csv = data_directory.joinpath('train.csv')
     test_csv = data_directory.joinpath('test.csv')
     subm_csv = data_directory.joinpath('submission_popular.csv')
@@ -36,6 +35,6 @@ def main(data_path):
     print("Finished calculating recommendations.")
 
 
-data_path = '../../data/'
+data_dir_path = '../../part_data'
 if __name__ == '__main__':
-    main(data_path)
+    main(data_dir_path)

@@ -1,4 +1,5 @@
 from pathlib import Path
+
 import pandas as pd
 
 from src.verify_submission import functions as f
@@ -34,8 +35,8 @@ def main(data_path, submission_file, test_file):
         print('One or more checks failed')
 
 
-data_path = '../../data'
-submision_popular = 'submission_popular.csv'
-test_csv = 'test.csv'
+data_dir_path = '../../part_data'
+submission_file = 'submission_popular.csv'
+test_file = 'test.csv'
 if __name__ == '__main__':
-    main(data_path, submision_popular, test_csv)
+    main(data_dir_path, submission_file, test_file)

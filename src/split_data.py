@@ -36,7 +36,6 @@ def ground_truth_sub(ground_truth):
     counter = 0
     for index, row in ground_truth.iterrows():
         if index in last_step_indexes and row['action_type'] == 'clickout item':
-            print(row['reference'],  row['impressions'],  row['prices'])
             ground_truth_submission.loc[counter] = [row['reference'], row['impressions'], row['prices']]
             counter = counter + 1
 
@@ -60,11 +59,11 @@ CLICK_OUT_ITEM = 'clickout item'
 REFERENCE = 'reference'
 
 if __name__ == '__main__':
-    core_dataset = pd.read_csv('../dataset/test.csv', nrows=10000)
+    core_dataset = pd.read_csv('../dataset/test.csv')
     train_df, test_df, ground_truth_df, label_df, ground_truth_submission = split_dataset(core_dataset, 0.8)
 
-    # train_df.to_csv('../data/train.csv')
-    # ground_truth_df.to_csv('../data/ground_truth.csv')
-    # test_df.to_csv('../data/test.csv')
-    # label_df.to_csv('../data/label.csv')
+    train_df.to_csv('../data/train.csv')
+    ground_truth_df.to_csv('../data/ground_truth.csv')
+    test_df.to_csv('../data/test.csv')
+    label_df.to_csv('../data/label.csv')
     ground_truth_submission.to_csv('../data/ground_truth_submission.csv')
