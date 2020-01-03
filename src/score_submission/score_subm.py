@@ -17,7 +17,7 @@ def main(data_path, submission_file, ground_truth_file):
     print(f'Mean reciprocal rank: {mrr}')
 
 
-data_dir_path = '../../part_data'
+data_dir_path = '../../data'
 submission_popular = 'submission_popular.csv'
 ground_truth = 'ground_truth.csv'
 if __name__ == '__main__':

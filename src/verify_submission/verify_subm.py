@@ -35,7 +35,7 @@ def main(data_path, submission_file, test_file):
         print('One or more checks failed')
 
 
-data_dir_path = '../../part_data'
+data_dir_path = '../../data'
 submission_file = 'submission_popular.csv'
 test_file = 'test.csv'
 if __name__ == '__main__':

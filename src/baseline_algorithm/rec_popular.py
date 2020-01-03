@@ -35,6 +35,6 @@ def main(data_path):
     print("Finished calculating recommendations.")
 
 
-data_dir_path = '../../part_data'
+data_dir_path = '../../data'
 if __name__ == '__main__':
     main(data_dir_path)

@@ -22,7 +22,7 @@ def check_passed(check=True):
 
 def check_duplicates(df):
     """Check if there are duplicate sessions in the df."""
-
+    print(len(df['session_id']), len(df['session_id'].unique()))
     check_dupl = (len(df['session_id']) == len(df['session_id'].unique()))
 
     return check_dupl
