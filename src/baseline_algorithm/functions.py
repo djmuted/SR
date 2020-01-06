@@ -75,6 +75,7 @@ def group_concat(df, gr_cols, col_concat):
     return df_out
 
 
+# TODO: Change implementation
 def calc_recommendation(df_expl, df_pop):
     """Calculate recommendations based on popularity of items.
 
