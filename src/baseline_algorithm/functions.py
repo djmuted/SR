@@ -77,14 +77,6 @@ def group_concat(df, gr_cols, col_concat):
 
 # TODO: Change implementation
 def calc_recommendation(df_expl, df_pop):
-    """Calculate recommendations based on popularity of items.
-
-    The final data frame will have an impression list sorted according to the number of clicks per item in a reference data frame.
-
-    :param df_expl: Data frame with exploded impression list
-    :param df_pop: Data frame with items and number of clicks
-    :return: Data frame with sorted impression list according to popularity in df_pop
-    """
 
     df_expl_clicks = (
         df_expl[GR_COLS + ["impressions"]]

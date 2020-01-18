@@ -15,6 +15,8 @@ def main(data_path, submission_file, ground_truth_file):
     mrr = f.score_submissions(subm_csv, gt_csv, f.get_reciprocal_ranks)
 
     print(f'Mean reciprocal rank: {mrr}')
+    # TODO: Delete
+    return mrr
 
 
 data_dir_path = '../../data'

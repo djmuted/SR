@@ -29,10 +29,10 @@ def split(df, perc_train=80):
     for step in last_steps:
         print(test.loc[step].reference)
 
-    # TODO: Usunac duplikaty
     test.to_csv("test.csv")
 
 
-# TODO: Const values
 data = pd.read_csv('../dataset/train.csv')
-split(data)
+
+split(data, 30)
+# split(data)

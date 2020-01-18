@@ -57,3 +57,5 @@ data/*
 dataset/*
 
 .idea/*
+*.csv
+*.txt
