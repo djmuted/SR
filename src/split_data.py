@@ -26,13 +26,9 @@ def split(df, perc_train=80):
         if ground_truth.loc[step]['action_type'] == 'clickout item':
             test['reference'][step] = np.nan
 
-    for step in last_steps:
-        print(test.loc[step].reference)
-
     test.to_csv("test.csv")
 
 
 data = pd.read_csv('../dataset/train.csv')
 
-split(data, 30)
-# split(data)
+split(data)
