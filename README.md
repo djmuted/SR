@@ -2,7 +2,6 @@
 
 Requiretments:
 
-### A typical top-level directory layout
 Basic folder structure:
 ├── data
 ├── dataset *
