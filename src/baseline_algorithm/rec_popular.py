@@ -10,14 +10,15 @@ default_data_directory = current_directory.joinpath('..', '..', 'data')
 
 
 def create_score(df_actions, df_popular, popular_ratio, action_ratio):
-    df_popular = df_popular * [1, 1, popular_ratio]
-    df_actions = df_actions * [1, 1, action_ratio]
+    df_popular = df_popular * [1, popular_ratio]
+    df_actions = df_actions * [1, action_ratio]
+
 
     concat = pd.concat([df_popular, df_actions], ignore_index=True)
 
-    concat.sort_values(by=['reference'])
+    #concat.sort_values(by=['reference'])
     concat = concat.groupby('reference').sum().reset_index()
-    concat.drop(columns=['Unnamed: 0'])
+    #concat.drop(columns=['Unnamed: 0'])
     return concat
 
 
@@ -53,8 +54,8 @@ def main(data_path, popular_ratio, action_ratio):
     test_csv = data_directory.joinpath('test.csv')
     subm_csv = data_directory.joinpath('submission_popular.csv')
 
-    print(f"Reading {train_csv} ...")
-    df_train = pd.read_csv(train_csv)
+    print(f"Readingg {train_csv} ...")
+    df_train = pd.read_csv(train_csv, nrows=100000)
     print(f"Reading {test_csv} ...")
     df_test = pd.read_csv(test_csv)
 
